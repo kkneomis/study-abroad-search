@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="col-md-3">
+    <br><br>
+    {% include 'student_info.html' %}
+
+</div>
+<div class="col-md-6 ">
+    {% if "no matches" in programs[0] %}
+        <div class="page-header">
+            <h2 class="center">We couldn't find any results</h2>
+        </div>
+    {% else %}
+        <h2 class="center">Here are your top ({{programs | length }}) Results</h2>
+    {% endif %}
+    
+    <div class="">
+        <div class="list-group">
+          {% for program in programs %}
+            <button type="button" class="list-group-item">{{ program }}</button>
+          {% endfor %}
+        </div>
+    </div>
+    <a href="/" class="btn btn-block btn-lg btn-success">Start Over</a>
+</div>
+{% endblock %}

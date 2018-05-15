@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="col-md-3">
+    <br><br>
+    {% include 'student_info.html' %}
+
+</div>
+
+    <div class="col-md-6">
+        <h2>What is your primary goal for studying abroad?</h2>
+        <div class="well">
+            <form action="{{ url_for('process_goal') }}" method="POST">
+
+                <div class="form-group">
+                    <select class="form-control" name="goal"  required>
+                      <option value="1">Price</option>
+                      <option value="2">Location</option>
+                      <option value="3">Program Duration (Semester, Short-Term (Summer/Winter), Year)</option>
+                      <option value="4">Topics/Courses Offered</option>
+                      <option value="5">Language</option>
+                    </select>
+                </div>  
+
+                <input type="submit" value="Next" class="btn btn-primary btn-lg btn-block">
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

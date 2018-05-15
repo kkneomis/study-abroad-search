@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="col-md-3">
+    <br><br>
+    {% include 'student_info.html' %}
+
+</div>
+
+
+    <div class="col-md-6 ">
+        <h2>What region are you interested in studying abroad in?</h2>
+        <div class="well">
+            <form action="{{ url_for('process_location') }}" method="POST">
+
+                <div class="form-group">
+                    <select class="form-control" name="decision" required>
+                      <option value="1">1. Europe</option>
+                      <option value="2">2. Asia</option>
+                      <option value="3">3. South America</option>
+                      <option value="4">4. Africa</option>
+                      <option value="5">5. Australia</option>
+                      <option value="6">6. New Zealand</option>
+                    </select>
+                </div>  
+
+                <input type="submit" value="Next" class="btn btn-primary btn-lg btn-block">
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

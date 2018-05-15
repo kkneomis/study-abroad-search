@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="col-md-3">
+    <br><br>
+    {% include 'student_info.html' %}
+</div>
+
+    <div class="col-md-6 ">
+        <h2>What duration are you interested in studying abroad for?</h2>
+        <div class="well">
+            <form action="{{ url_for('process_duration') }}" method="POST">
+
+                <div class="form-group">
+                    <select class="form-control" name="decision" required>
+                      <option value="1">1. Summer</option>
+                      <option value="2">2. Short-term (Winter)</option>
+                      <option value="3">3. Short-term (Spring)</option>
+                      <option value="4">4. Semester</option>
+                      <option value="5">5. Year</option>
+                    </select>
+                </div>  
+
+                <input type="submit" value="Next" class="btn btn-primary btn-lg btn-block">
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

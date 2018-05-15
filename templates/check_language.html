@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="col-md-3">
+    <br><br>
+    {% include 'student_info.html' %}
+
+</div>
+
+<div class="col-md-6 ">
+    <h2>Which language are you interested in studying?</h2>
+    <div class="well">
+        <form action="{{ url_for('process_language') }}" method="POST">
+
+            <div class="form-group">
+                <select class="form-control" name="decision" required>
+                  <option value="1">1. Arabic</option>
+                  <option value="2">2. Chinese</option>
+                  <option value="3">3. Czech</option>
+                  <option value="4">4. Dutch</option>
+                  <option value="5">5. French</option>
+                  <option value="6">6. German</option>
+                  <option value="7">7. Italian</option>
+                  <option value="8">8. Japanese</option>
+                  <option value="9">9. Korean</option>
+                  <option value="10">10. Portuguese</option>
+                  <option value="11">11. Spanish</option>
+                </select>
+            </div>  
+
+            <input type="submit" value="Next" class="btn btn-primary btn-lg btn-block">
+
+        </form>
+    </div>
+</div>
+{% endblock %}
