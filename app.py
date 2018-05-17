@@ -40,10 +40,11 @@ def create_student():
     
     
     # Adding the userprofile to the global config so we have access to it elsewhere
+    config['myLines'] = pr.read_project_csv("Project_Master_SheetV3.csv")
     config['userprofile'] = user_profile_01
     
     #Using the userprofile to build a userList
-    config['userList'] = check_requirements(myLines, user_profile_01)
+    config['userList'] = check_requirements(config['myLines'], user_profile_01)
     
     #get_price(myLines, userList, 1)
     return redirect(url_for('get_goal'))
@@ -88,6 +89,7 @@ def check_price():
 @app.route('/process_price', methods=['GET', 'POST'])
 def process_price():
     """Get result based on price point and render them"""
+    myLines = config['myLines']
     selection = int(request.form['decision'])
     programs = get_by_price(myLines, 
                        config['userList'], 
@@ -111,7 +113,7 @@ def process_location():
     and render them 
     """
     selection = int(request.form['decision'])
-    programs = get_by_location(myLines, 
+    programs = get_by_location(config['myLines'], 
                        config['userList'], 
                        selection)
     return render_template("results.html",
@@ -132,7 +134,7 @@ def process_duration():
     Get results based on duration and redner them
     """
     selection = int(request.form['decision'])
-    programs = get_by_duration(myLines, 
+    programs = get_by_duration(config['myLines'], 
                        config['userList'], 
                        selection)
     return render_template("results.html",
@@ -153,7 +155,7 @@ def process_topic():
     Get results based on topic and render them
     """
     selection = int(request.form['decision'])
-    programs = get_by_topic(myLines, 
+    programs = get_by_topic(config['myLines'], 
                        config['userList'], 
                        selection)
     return render_template("results.html",
@@ -174,7 +176,7 @@ def process_language():
     Get results based on language and render them
     """
     selection = int(request.form['decision'])
-    programs = get_by_language(myLines, 
+    programs = get_by_language(config['myLines'], 
                        config['userList'], 
                        selection)
     return render_template("results.html",
@@ -183,5 +185,4 @@ def process_language():
 
 
 if __name__ == "__main__":   
-    myLines = pr.read_project_csv("Project_Master_SheetV3.csv")
     app.run(debug=True)
