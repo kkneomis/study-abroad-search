@@ -6,4 +6,3 @@ verify_ssl = true
 flask = "==0.12.1"
 werkzeug = "==0.12.2"
 gunicorn = "*"
-python_version = "3.6"
