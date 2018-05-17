@@ -3,7 +3,7 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 [packages]
 
-Flask-SQLAlchemy = "==2.2"
-Flask = "==0.12.1"
-Werkzeug = "==0.12.2"
-
+flask = "==0.12.1"
+werkzeug = "==0.12.2"
+gunicorn = "*"
+python_version = "3.6"
